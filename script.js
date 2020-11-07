@@ -1,34 +1,56 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>To-do List</title>
-    <link href="style.css" rel="stylesheet" type="text/css" />
-    <script src="script.js"></script>
-  </head>
-  <body>
-    <container-fluid>
-      <div>
-        <h1> To Do List Tracker </h1>
-      </div>
-      <div>
-        <form>
-           <input type="text" id="todo-textbox" name ="todo" placeholder="What to do"></input>
-           <br>
-           <input type="text" id="links" name="links" placeholder="Helpful Links">
-           <br>
-           <button type="submit" id="addButton"onclick="clearTextboxes()">Add</button>
-           
-        </form>
-      </div>
-      <div id="todo-list"> 
-        <h4> Word of Caution: Do Not reload the page until all your tasks are done. If you do, they will just disappear into thin air like Harry Potter did after wearing the invisibility cloak</h4>
-      </div>
-    </container-fluid>
+function onload()
+{
+  document.getElementById("addButton").addEventListener("click", function(event){
+    event.preventDefault();
+    addToDo();
+  });
+}
 
-    <script>
-      onload();
-    </script>
-  </body>
-</html>
+function addToDo()
+{  
+  var todoText = document.getElementById('todo-textbox').value;
+  var link = document.getElementById('links').value;
+  console.log("text: ", todoText);
+  console.log("link: ", link);
+  var todoList = document.getElementById('todo-list');
+  
+  var newToDo = document.createElement("div"); 
+
+  var textTodo = document.createElement("p"); 
+  textTodo.setAttribute('class', 'textTodo');
+  textTodo.innerHTML = todoText;
+  var a = document.createElement("a");
+  var linkText = document.createTextNode("A Link");
+  a.appendChild(linkText);
+  a.href = link;
+  a.setAttribute('class', 'linkText');
+  textTodo.appendChild(a);
+  textTodo.style.display = "inline-block";
+
+  var checkbox = document.createElement("input"); 
+  checkbox.setAttribute('type', 'checkbox');
+  checkbox.setAttribute('class', 'checkbox');
+  checkbox.style.display = "inline";
+  checkbox.addEventListener("click", function(event) {
+    textTodo.style.textDecoration = 'line-through';
+  });
+
+  var yaybutton = document.createElement("button"); 
+  yaybutton.setAttribute('type', 'button');
+  yaybutton.setAttribute('class', 'yaybutton');
+  yaybutton.textContent = 'Yay, I did it!';
+    yaybutton.style.display = "inline";
+  yaybutton.addEventListener("click", function(event) {
+    textTodo.style.textDecoration = 'line-through';
+  });
+
+  newToDo.appendChild(checkbox);
+  newToDo.appendChild(textTodo);
+  newToDo.appendChild(yaybutton);
+
+  todoList.appendChild(newToDo);
+
+  document.getElementById('todo-textbox').value = '';
+  document.getElementById('links').value = '';
+}
+

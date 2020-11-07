@@ -1,0 +1,50 @@
+body {
+  background-color: #D4D4D4;
+  text-align: center;
+}
+
+#todo-textbox {
+  font-weight: bold;
+  font-size: 22px;
+  margin: 10px;
+}
+
+#links
+{
+  font-size: 18px;
+  margin: 10px;
+}
+#addButton{
+  font-size:23px;
+  font-weight:bold;
+  margin: 10px;
+  background-color: #78EA98;
+}
+.checkbox, .textTodo, .yaybutton {
+  margin-right: 50px;
+}
+
+.linkText {
+  margin-left: 20px;
+  font-size:20px;
+  color: #5983D4;
+}
+.textTodo{
+  font-size:25px;
+  color: #59BED4;
+}
+.checkbox{
+  height: 25px;
+  width:25px;
+}
+
+.yaybutton{
+  font-size: 20px;
+  background-color: #8C83F4;
+}
+
+h4{
+  font-size: 15px;
+  font-weight:bold;
+  color: #D45959;
+}
